@@ -1,8 +1,7 @@
 import { Router } from "express";
-// import { addOrder, getAllOrders } from "../controllers/order.controller.js";
+import { addOrder, getAllOrders } from "../controllers/order.controller.js";
 
-
-const router=Router();
-// router.route("/add-order").post(addOrder);
+const router = Router();
+router.route("/add-order").post(addOrder);
 // router.route("/get-all-order").get(getAllOrders)
-export default router
+export default router;
