@@ -1,8 +1,8 @@
 import { Product } from "../models/product.model.js";
-import { ApiResponsone } from "../../utils/Apiresponse.js";
-import { asyncHandler } from "../../utils/asyncHandler.js";
-import { upload } from "../../utils/cloudinary.js";
-import { ApiError } from "../../utils/error.js";
+import { ApiResponsone } from "../utils/Apiresponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { upload } from "../utils/cloudinary.js";
+import { ApiError } from "../utils/error.js";
 
 const addProduct = asyncHandler(async (req, res) => {
   try {
