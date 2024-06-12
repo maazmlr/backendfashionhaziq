@@ -1,7 +1,7 @@
 import express from "express";
 import connection from "./db/index.js";
+import { app } from "./app.js";
 
-const app = express();
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
 });
