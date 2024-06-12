@@ -5,7 +5,7 @@ const app = express();
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
 });
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 7000;
 
 connection()
   .then(
