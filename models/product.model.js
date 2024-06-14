@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+
 const subCategoryEnum = {
   kids: ["boys", "girls", "infant"],
   women: ["traditional", "turkish"],
@@ -24,12 +25,9 @@ const ProductSchema = new Schema({
   subcategory: {
     type: String,
     required: true,
-   
   },
   subsubcategory: {
     type: String,
-   
-     
   },
   name: {
     type: String,
@@ -57,6 +55,14 @@ const ProductSchema = new Schema({
   image: {
     type: [String], // Assuming you store image URLs or paths
     required: true,
+  },
+  size: {
+    type: [String], // Array of sizes
+    required: false, // Optional field
+  },
+  color: {
+    type: [String], // Array of colors
+    required: false, // Optional field
   },
 });
 

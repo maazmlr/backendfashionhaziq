@@ -18,6 +18,8 @@ const addProduct = asyncHandler(async (req, res) => {
       price,
       discount,
       stock,
+      color,
+      size,
     } = req.body;
 
     console.log(req.body);
@@ -43,6 +45,8 @@ const addProduct = asyncHandler(async (req, res) => {
       discount,
       stock,
       image: images,
+      size,
+      color,
     });
 
     // Save the product to the database
