@@ -45,8 +45,8 @@ const addProduct = asyncHandler(async (req, res) => {
       discount,
       stock,
       image: images,
-      size,
-      color,
+      size: size.split(","),
+      color: color.split(","),
     });
 
     // Save the product to the database
@@ -95,4 +95,38 @@ const getProductBy = asyncHandler(async (req, res) => {
   }
 });
 
-export { addProduct, getProductByID, getProductBy };
+const getAllProduct = asyncHandler(async (req, res) => {
+  const items = await Product.find();
+  return res
+    .status(200)
+    .json(new ApiResponsone(200, items, "items fetched successfully"));
+});
+
+const deleteProduct = asyncHandler(async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findById(id);
+
+    if (!product) {
+      return res
+        .status(404)
+        .json(new ApiResponsone(404, null, "Product not found"));
+    }
+
+    const deleted = await Product.findByIdAndDelete(id);
+
+    return res
+      .status(200)
+      .json(new ApiResponsone(200, deleted, "Product deleted successfully"));
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export {
+  addProduct,
+  getProductByID,
+  getProductBy,
+  getAllProduct,
+  deleteProduct,
+};

@@ -1,14 +1,14 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
 const productSchema = new Schema({
-  _id: { type: Schema.Types.ObjectId,
-    ref:"Product",
-     required: true },
+  _id: { type: Schema.Types.ObjectId, ref: "Product", required: true },
   name: { type: String, required: true },
+  color: { type: String, required: true },
+  size: { type: String, required: true },
   total_price: { type: Number, required: true },
-  quantity: { type: Number, required: true }
+  quantity: { type: Number, required: true },
 });
 
 const orderSchema = new Schema({
@@ -18,9 +18,9 @@ const orderSchema = new Schema({
   phoneNumber: { type: String, required: true },
   whatsappNumber: { type: String, required: true },
   zipcode: { type: String, required: true },
-  products: { type: [productSchema], required: true }
+  products: { type: [productSchema], required: true },
 });
 
-const Order = model('Order', orderSchema);
+const Order = model("Order", orderSchema);
 
 export default Order;
