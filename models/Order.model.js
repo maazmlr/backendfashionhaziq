@@ -12,6 +12,7 @@ const productSchema = new Schema({
 });
 
 const orderSchema = new Schema({
+  orderNo: { type: Number },
   address: { type: String, required: true },
   city: { type: String, required: true },
   fullName: { type: String, required: true },

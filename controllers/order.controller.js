@@ -29,7 +29,8 @@ const addOrder = asyncHandler(async (req, res) => {
 
     // Find the latest order to determine the next orderNo
     const lastOrder = await Order.findOne().sort({ orderNo: -1 }); // Sort in descending order
-    const orderNo = lastOrder ? lastOrder.orderNo + 1 : 500; // Start from 500 if no orders exist
+    const orderNo = lastOrder && lastOrder.orderNo ? lastOrder.orderNo + 1 : 500; // Start from 500 if no orders exist
+    console.log(orderNo, "order is  ", lastOrder);
 
     // Create a new order
     const newOrder = new Order({
@@ -54,6 +55,7 @@ const addOrder = asyncHandler(async (req, res) => {
         }
       })
     );
+    console.log(savedOrder, "saved order");
 
     res.status(201).json({
       status: 201,
@@ -63,7 +65,7 @@ const addOrder = asyncHandler(async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-});  
+});
 
 
 const getAllOrders = asyncHandler(async (req, res) => {
