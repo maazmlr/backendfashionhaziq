@@ -70,7 +70,7 @@ const addOrder = asyncHandler(async (req, res) => {
 
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = (await Order.find()).reverse();
     res.status(200).json(orders);
   } catch (error) {
     res.status(400).json({ message: error.message });
